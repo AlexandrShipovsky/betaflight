@@ -37,7 +37,7 @@ void usbCableDetectDeinit(void)
 {
 #ifdef USE_USB_DETECT
     IOInit(usbDetectPin, OWNER_FREE, 0);
-    IOConfigGPIO(usbDetectPin, IOCFG_IN_FLOATING);
+    IOConfigGPIO(usbDeteSTM32F427ctPin, IOCFG_IN_FLOATING);
     usbDetectPin = IO_NONE;
 #endif
 }
