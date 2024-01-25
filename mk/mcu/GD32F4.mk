@@ -62,38 +62,37 @@ DEVICE_STDPERIPH_SRC := $(STDPERIPH_SRC) \
                         $(USBCORE_SRC) \
                         $(USBCDC_SRC)
 else
-USBCORE_DIR = $(ROOT)/lib/main/STM32_USB_Device_Library/Core
-USBCORE_SRC = $(notdir $(wildcard $(USBCORE_DIR)/src/*.c))
-USBOTG_DIR  = $(ROOT)/lib/main/STM32_USB_OTG_Driver
-USBOTG_SRC  = $(notdir $(wildcard $(USBOTG_DIR)/src/*.c))
-EXCLUDES    = usb_bsp_template.c \
-              usb_conf_template.c \
-              usb_hcd_int.c \
-              usb_hcd.c \
-              usb_otg.c
+USBDRV_DIR = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/driver
+USBDRV_SRC = $(notdir $(wildcard $(USBDRV_DIR)/Source/*.c))
 
-USBOTG_SRC  := $(filter-out ${EXCLUDES}, $(USBOTG_SRC))
-USBCDC_DIR  = $(ROOT)/lib/main/STM32_USB_Device_Library/Class/cdc
-USBCDC_SRC  = $(notdir $(wildcard $(USBCDC_DIR)/src/*.c))
+USBCORE_DIR = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/device/core
+USBCORE_SRC = $(notdir $(wildcard $(USBCORE_DIR)/Source/*.c))
+
+USBCORESTM32_DIR = $(ROOT)/lib/main/STM32_USB_Device_Library/Core
+USBCORESTM32_SRC = $(notdir $(wildcard $(USBCORE_DIR)/src/*.c))
+
+USTD_DIR = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/ustd
+
+USBCDC_DIR  = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/device/class/cdc
+USBCDC_SRC  = $(notdir $(wildcard $(USBCDC_DIR)/Source/*.c))
 EXCLUDES    = usbd_cdc_if_template.c
 USBCDC_SRC  := $(filter-out ${EXCLUDES}, $(USBCDC_SRC))
-USBMSC_DIR  = $(ROOT)/lib/main/STM32_USB_Device_Library/Class/msc
-USBMSC_SRC  = $(notdir $(wildcard $(USBMSC_DIR)/src/*.c))
+USBMSC_DIR  = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/device/class/msc
+USBMSC_SRC  = $(notdir $(wildcard $(USBMSC_DIR)/Source/*.c))
 EXCLUDES    = usbd_storage_template.c
 USBMSC_SRC  := $(filter-out ${EXCLUDES}, $(USBMSC_SRC))
-USBHID_DIR  = $(ROOT)/lib/main/STM32_USB_Device_Library/Class/hid
-USBHID_SRC  = $(notdir $(wildcard $(USBHID_DIR)/src/*.c))
-USBWRAPPER_DIR  = $(ROOT)/lib/main/STM32_USB_Device_Library/Class/hid_cdc_wrapper
-USBWRAPPER_SRC  = $(notdir $(wildcard $(USBWRAPPER_DIR)/src/*.c))
-VPATH       := $(VPATH):$(USBOTG_DIR)/src:$(USBCORE_DIR)/src:$(USBCDC_DIR)/src:$(USBMSC_DIR)/src:$(USBHID_DIR)/src:$(USBWRAPPER_DIR)/src
+USBHID_DIR  = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/device/class/hid
+USBHID_SRC  = $(notdir $(wildcard $(USBHID_DIR)/Source/*.c))
+VPATH       := $(VPATH):$(USBCORE_DIR)/src:$(USBDRV_DIR)/src:$(USBCDC_DIR)/src:$(USBMSC_DIR)/src:$(USBHID_DIR)/src:$(USBCORESTM32_DIR)/src
 
 DEVICE_STDPERIPH_SRC := $(STDPERIPH_SRC) \
-                        $(USBOTG_SRC) \
+						$(USBDRV_SRC) \
                         $(USBCORE_SRC) \
+                        $(USBCORESTM32_DIR) \
                         $(USBCDC_SRC) \
                         $(USBHID_SRC) \
-                        $(USBWRAPPER_SRC) \
                         $(USBMSC_SRC)
+
 endif
 
 #CMSIS
@@ -110,18 +109,21 @@ INCLUDE_DIRS    := $(INCLUDE_DIRS) \
                    $(USBCDC_DIR)/Inc \
                    $(CMSIS_DIR)/Include \
                    $(CMSIS_DIR)/Device/ST/STM32F4xx/Include \
-                   $(ROOT)/src/main/drivers/stm32/vcp_hal
+                   $(ROOT)/src/main/drivers/gd32/vcp_hal
 else
 CMSIS_SRC       := $(notdir $(wildcard $(CMSIS_DIR)/CoreSupport/*.c \
                    $(ROOT)/lib/main/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx/*.c))
 INCLUDE_DIRS    := $(INCLUDE_DIRS) \
                    $(STDPERIPH_DIR)/inc \
-                   $(USBOTG_DIR)/inc \
-                   $(USBCORE_DIR)/inc \
-                   $(USBCDC_DIR)/inc \
-                   $(USBHID_DIR)/inc \
-                   $(USBWRAPPER_DIR)/inc \
-                   $(USBMSC_DIR)/inc \
+                   $(USBDRV_DIR)/Include \
+                   $(USBCORE_DIR)/Include \
+                   $(USBCORESTM32_DIR)/inc \
+                   $(USTD_DIR)/class/cdc \
+                   $(USTD_DIR)/class/msc \
+                   $(USTD_DIR)/common \
+                   $(USBCDC_DIR)/Include \
+                   $(USBHID_DIR)/Include \
+                   $(USBMSC_DIR)/Include \
                    $(CMSIS_DIR)/Core/Include \
                    $(ROOT)/lib/main/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx \
                    $(ROOT)/src/main/drivers/gd32/vcpf4
