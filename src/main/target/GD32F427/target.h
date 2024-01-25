@@ -29,6 +29,10 @@
 #define STM32F427_437xx
 #endif
 
+#ifndef STM32F4
+#define STM32F4
+#endif
+
 #define USE_I2C_DEVICE_1
 #define USE_I2C_DEVICE_2
 #define USE_I2C_DEVICE_3

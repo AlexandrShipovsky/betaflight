@@ -27,6 +27,10 @@
 #include "usbd_core.h"
 #include "usbd_cdc_core.h"
 
+//for GD32
+#include "drv_usbd_int.h"
+extern usb_core_driver cdc_acm;
+
 extern uint32_t USBD_OTG_ISR_Handler (USB_OTG_CORE_HANDLE *pdev);
 extern USB_OTG_CORE_HANDLE USB_OTG_dev;
 
@@ -120,7 +124,8 @@ void OTG_HS_IRQHandler(void)
 void OTG_FS_IRQHandler(void)
 #endif
 {
-  USBD_OTG_ISR_Handler (&USB_OTG_dev);
+  //USBD_OTG_ISR_Handler (&USB_OTG_dev);
+    usbd_isr(&cdc_acm);
 }
 
 #ifdef USB_OTG_HS_DEDICATED_EP1_ENABLED

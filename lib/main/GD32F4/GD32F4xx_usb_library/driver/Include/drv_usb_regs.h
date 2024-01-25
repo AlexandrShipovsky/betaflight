@@ -186,107 +186,107 @@ typedef struct _usb_regs
 } usb_core_regs;
 
 /* global OTG control and status register bits definitions */
-#define GOTGCS_BSV                BIT(19)             /*!< B-Session Valid */
-#define GOTGCS_ASV                BIT(18)             /*!< A-session valid */
-#define GOTGCS_DI                 BIT(17)             /*!< debounce interval */
-#define GOTGCS_CIDPS              BIT(16)             /*!< id pin status */
-#define GOTGCS_DHNPEN             BIT(11)             /*!< device HNP enable */
-#define GOTGCS_HHNPEN             BIT(10)             /*!< host HNP enable */
-#define GOTGCS_HNPREQ             BIT(9)              /*!< HNP request */
-#define GOTGCS_HNPS               BIT(8)              /*!< HNP successes */
-#define GOTGCS_SRPREQ             BIT(1)              /*!< SRP request */
-#define GOTGCS_SRPS               BIT(0)              /*!< SRP successes */
+#define GOTGCS_BSV                USBBIT(19)             /*!< B-Session Valid */
+#define GOTGCS_ASV                USBBIT(18)             /*!< A-session valid */
+#define GOTGCS_DI                 USBBIT(17)             /*!< debounce interval */
+#define GOTGCS_CIDPS              USBBIT(16)             /*!< id pin status */
+#define GOTGCS_DHNPEN             USBBIT(11)             /*!< device HNP enable */
+#define GOTGCS_HHNPEN             USBBIT(10)             /*!< host HNP enable */
+#define GOTGCS_HNPREQ             USBBIT(9)              /*!< HNP request */
+#define GOTGCS_HNPS               USBBIT(8)              /*!< HNP successes */
+#define GOTGCS_SRPREQ             USBBIT(1)              /*!< SRP request */
+#define GOTGCS_SRPS               USBBIT(0)              /*!< SRP successes */
 
 /* global OTG interrupt flag register bits definitions */
-#define GOTGINTF_DF               BIT(19)             /*!< debounce finish */
-#define GOTGINTF_ADTO             BIT(18)             /*!< A-device timeout */
-#define GOTGINTF_HNPDET           BIT(17)             /*!< host negotiation request detected */
-#define GOTGINTF_HNPEND           BIT(9)              /*!< HNP end */
-#define GOTGINTF_SRPEND           BIT(8)              /*!< SRP end */
-#define GOTGINTF_SESEND           BIT(2)              /*!< session end */
+#define GOTGINTF_DF               USBBIT(19)             /*!< debounce finish */
+#define GOTGINTF_ADTO             USBBIT(18)             /*!< A-device timeout */
+#define GOTGINTF_HNPDET           USBBIT(17)             /*!< host negotiation request detected */
+#define GOTGINTF_HNPEND           USBBIT(9)              /*!< HNP end */
+#define GOTGINTF_SRPEND           USBBIT(8)              /*!< SRP end */
+#define GOTGINTF_SESEND           USBBIT(2)              /*!< session end */
 
 /* global AHB control and status register bits definitions */
-#define GAHBCS_PTXFTH             BIT(8)              /*!< periodic Tx FIFO threshold */
-#define GAHBCS_TXFTH              BIT(7)              /*!< tx FIFO threshold */
-#define GAHBCS_DMAEN              BIT(5)              /*!< DMA function Enable */
+#define GAHBCS_PTXFTH             USBBIT(8)              /*!< periodic Tx FIFO threshold */
+#define GAHBCS_TXFTH              USBBIT(7)              /*!< tx FIFO threshold */
+#define GAHBCS_DMAEN              USBBIT(5)              /*!< DMA function Enable */
 #define GAHBCS_BURST              BITS(1, 4)          /*!< the AHB burst type used by DMA */
-#define GAHBCS_GINTEN             BIT(0)              /*!< global interrupt enable */
+#define GAHBCS_GINTEN             USBBIT(0)              /*!< global interrupt enable */
 
 /* global USB control and status register bits definitions */
-#define GUSBCS_FDM                BIT(30)             /*!< force device mode */
-#define GUSBCS_FHM                BIT(29)             /*!< force host mode */
-#define GUSBCS_ULPIEOI            BIT(21)             /*!< ULPI external over-current indicator */
-#define GUSBCS_ULPIEVD            BIT(20)             /*!< ULPI external VBUS driver */
+#define GUSBCS_FDM                USBBIT(30)             /*!< force device mode */
+#define GUSBCS_FHM                USBBIT(29)             /*!< force host mode */
+#define GUSBCS_ULPIEOI            USBBIT(21)             /*!< ULPI external over-current indicator */
+#define GUSBCS_ULPIEVD            USBBIT(20)             /*!< ULPI external VBUS driver */
 #define GUSBCS_UTT                BITS(10, 13)        /*!< USB turnaround time */
-#define GUSBCS_HNPCEN             BIT(9)              /*!< HNP capability enable */
-#define GUSBCS_SRPCEN             BIT(8)              /*!< SRP capability enable */
-#define GUSBCS_EMBPHY             BIT(6)              /*!< embedded PHY selected */
+#define GUSBCS_HNPCEN             USBBIT(9)              /*!< HNP capability enable */
+#define GUSBCS_SRPCEN             USBBIT(8)              /*!< SRP capability enable */
+#define GUSBCS_EMBPHY             USBBIT(6)              /*!< embedded PHY selected */
 #define GUSBCS_TOC                BITS(0, 2)          /*!< timeout calibration */
 
 /* global reset control register bits definitions */
-#define GRSTCTL_DMAIDL            BIT(31)             /*!< DMA idle state */
-#define GRSTCTL_DMABSY            BIT(30)             /*!< DMA busy */
+#define GRSTCTL_DMAIDL            USBBIT(31)             /*!< DMA idle state */
+#define GRSTCTL_DMABSY            USBBIT(30)             /*!< DMA busy */
 #define GRSTCTL_TXFNUM            BITS(6, 10)         /*!< tx FIFO number */
-#define GRSTCTL_TXFF              BIT(5)              /*!< tx FIFO flush */
-#define GRSTCTL_RXFF              BIT(4)              /*!< rx FIFO flush */
-#define GRSTCTL_HFCRST            BIT(2)              /*!< host frame counter reset */
-#define GRSTCTL_HCSRST            BIT(1)              /*!< HCLK soft reset */
-#define GRSTCTL_CSRST             BIT(0)              /*!< core soft reset */
+#define GRSTCTL_TXFF              USBBIT(5)              /*!< tx FIFO flush */
+#define GRSTCTL_RXFF              USBBIT(4)              /*!< rx FIFO flush */
+#define GRSTCTL_HFCRST            USBBIT(2)              /*!< host frame counter reset */
+#define GRSTCTL_HCSRST            USBBIT(1)              /*!< HCLK soft reset */
+#define GRSTCTL_CSRST             USBBIT(0)              /*!< core soft reset */
 
 /* global interrupt flag register bits definitions */
-#define GINTF_WKUPIF              BIT(31)             /*!< wakeup interrupt flag */
-#define GINTF_SESIF               BIT(30)             /*!< session interrupt flag */
-#define GINTF_DISCIF              BIT(29)             /*!< disconnect interrupt flag */
-#define GINTF_IDPSC               BIT(28)             /*!< id pin status change */
-#define GINTF_PTXFEIF             BIT(26)             /*!< periodic tx FIFO empty interrupt flag */
-#define GINTF_HCIF                BIT(25)             /*!< host channels interrupt flag */
-#define GINTF_HPIF                BIT(24)             /*!< host port interrupt flag */
-#define GINTF_PXNCIF              BIT(21)             /*!< periodic transfer not complete interrupt flag */
-#define GINTF_ISOONCIF            BIT(21)             /*!< isochronous OUT transfer not complete interrupt flag */
-#define GINTF_ISOINCIF            BIT(20)             /*!< isochronous IN transfer not complete interrupt flag */
-#define GINTF_OEPIF               BIT(19)             /*!< OUT endpoint interrupt flag */
-#define GINTF_IEPIF               BIT(18)             /*!< IN endpoint interrupt flag */
-#define GINTF_EOPFIF              BIT(15)             /*!< end of periodic frame interrupt flag */
-#define GINTF_ISOOPDIF            BIT(14)             /*!< isochronous OUT packet dropped interrupt flag */
-#define GINTF_ENUMFIF             BIT(13)             /*!< enumeration finished */
-#define GINTF_RST                 BIT(12)             /*!< USB reset */
-#define GINTF_SP                  BIT(11)             /*!< USB suspend */
-#define GINTF_ESP                 BIT(10)             /*!< early suspend */
-#define GINTF_GONAK               BIT(7)              /*!< global OUT NAK effective */
-#define GINTF_GNPINAK             BIT(6)              /*!< global IN non-periodic NAK effective */
-#define GINTF_NPTXFEIF            BIT(5)              /*!< non-periodic tx FIFO empty interrupt flag */
-#define GINTF_RXFNEIF             BIT(4)              /*!< rx FIFO non-empty interrupt flag */
-#define GINTF_SOF                 BIT(3)              /*!< start of frame */
-#define GINTF_OTGIF               BIT(2)              /*!< OTG interrupt flag */
-#define GINTF_MFIF                BIT(1)              /*!< mode fault interrupt flag */
-#define GINTF_COPM                BIT(0)              /*!< current operation mode */
+#define GINTF_WKUPIF              USBBIT(31)             /*!< wakeup interrupt flag */
+#define GINTF_SESIF               USBBIT(30)             /*!< session interrupt flag */
+#define GINTF_DISCIF              USBBIT(29)             /*!< disconnect interrupt flag */
+#define GINTF_IDPSC               USBBIT(28)             /*!< id pin status change */
+#define GINTF_PTXFEIF             USBBIT(26)             /*!< periodic tx FIFO empty interrupt flag */
+#define GINTF_HCIF                USBBIT(25)             /*!< host channels interrupt flag */
+#define GINTF_HPIF                USBBIT(24)             /*!< host port interrupt flag */
+#define GINTF_PXNCIF              USBBIT(21)             /*!< periodic transfer not complete interrupt flag */
+#define GINTF_ISOONCIF            USBBIT(21)             /*!< isochronous OUT transfer not complete interrupt flag */
+#define GINTF_ISOINCIF            USBBIT(20)             /*!< isochronous IN transfer not complete interrupt flag */
+#define GINTF_OEPIF               USBBIT(19)             /*!< OUT endpoint interrupt flag */
+#define GINTF_IEPIF               USBBIT(18)             /*!< IN endpoint interrupt flag */
+#define GINTF_EOPFIF              USBBIT(15)             /*!< end of periodic frame interrupt flag */
+#define GINTF_ISOOPDIF            USBBIT(14)             /*!< isochronous OUT packet dropped interrupt flag */
+#define GINTF_ENUMFIF             USBBIT(13)             /*!< enumeration finished */
+#define GINTF_RST                 USBBIT(12)             /*!< USB reset */
+#define GINTF_SP                  USBBIT(11)             /*!< USB suspend */
+#define GINTF_ESP                 USBBIT(10)             /*!< early suspend */
+#define GINTF_GONAK               USBBIT(7)              /*!< global OUT NAK effective */
+#define GINTF_GNPINAK             USBBIT(6)              /*!< global IN non-periodic NAK effective */
+#define GINTF_NPTXFEIF            USBBIT(5)              /*!< non-periodic tx FIFO empty interrupt flag */
+#define GINTF_RXFNEIF             USBBIT(4)              /*!< rx FIFO non-empty interrupt flag */
+#define GINTF_SOF                 USBBIT(3)              /*!< start of frame */
+#define GINTF_OTGIF               USBBIT(2)              /*!< OTG interrupt flag */
+#define GINTF_MFIF                USBBIT(1)              /*!< mode fault interrupt flag */
+#define GINTF_COPM                USBBIT(0)              /*!< current operation mode */
 
 /* global interrupt enable register bits definitions */
-#define GINTEN_WKUPIE             BIT(31)             /*!< wakeup interrupt enable */
-#define GINTEN_SESIE              BIT(30)             /*!< session interrupt enable */
-#define GINTEN_DISCIE             BIT(29)             /*!< disconnect interrupt enable */
-#define GINTEN_IDPSCIE            BIT(28)             /*!< id pin status change interrupt enable */
-#define GINTEN_PTXFEIE            BIT(26)             /*!< periodic tx FIFO empty interrupt enable */
-#define GINTEN_HCIE               BIT(25)             /*!< host channels interrupt enable */
-#define GINTEN_HPIE               BIT(24)             /*!< host port interrupt enable */
-#define GINTEN_IPXIE              BIT(21)             /*!< periodic transfer not complete interrupt enable */
-#define GINTEN_ISOONCIE           BIT(21)             /*!< isochronous OUT transfer not complete interrupt enable */
-#define GINTEN_ISOINCIE           BIT(20)             /*!< isochronous IN transfer not complete interrupt enable */
-#define GINTEN_OEPIE              BIT(19)             /*!< OUT endpoints interrupt enable */
-#define GINTEN_IEPIE              BIT(18)             /*!< IN endpoints interrupt enable */
-#define GINTEN_EOPFIE             BIT(15)             /*!< end of periodic frame interrupt enable */
-#define GINTEN_ISOOPDIE           BIT(14)             /*!< isochronous OUT packet dropped interrupt enable */
-#define GINTEN_ENUMFIE            BIT(13)             /*!< enumeration finish enable */
-#define GINTEN_RSTIE              BIT(12)             /*!< USB reset interrupt enable */
-#define GINTEN_SPIE               BIT(11)             /*!< USB suspend interrupt enable */
-#define GINTEN_ESPIE              BIT(10)             /*!< early suspend interrupt enable */
-#define GINTEN_GONAKIE            BIT(7)              /*!< global OUT NAK effective interrupt enable */
-#define GINTEN_GNPINAKIE          BIT(6)              /*!< global non-periodic IN NAK effective interrupt enable */
-#define GINTEN_NPTXFEIE           BIT(5)              /*!< non-periodic Tx FIFO empty interrupt enable */
-#define GINTEN_RXFNEIE            BIT(4)              /*!< receive FIFO non-empty interrupt enable */
-#define GINTEN_SOFIE              BIT(3)              /*!< start of frame interrupt enable */
-#define GINTEN_OTGIE              BIT(2)              /*!< OTG interrupt enable */
-#define GINTEN_MFIE               BIT(1)              /*!< mode fault interrupt enable */
+#define GINTEN_WKUPIE             USBBIT(31)             /*!< wakeup interrupt enable */
+#define GINTEN_SESIE              USBBIT(30)             /*!< session interrupt enable */
+#define GINTEN_DISCIE             USBBIT(29)             /*!< disconnect interrupt enable */
+#define GINTEN_IDPSCIE            USBBIT(28)             /*!< id pin status change interrupt enable */
+#define GINTEN_PTXFEIE            USBBIT(26)             /*!< periodic tx FIFO empty interrupt enable */
+#define GINTEN_HCIE               USBBIT(25)             /*!< host channels interrupt enable */
+#define GINTEN_HPIE               USBBIT(24)             /*!< host port interrupt enable */
+#define GINTEN_IPXIE              USBBIT(21)             /*!< periodic transfer not complete interrupt enable */
+#define GINTEN_ISOONCIE           USBBIT(21)             /*!< isochronous OUT transfer not complete interrupt enable */
+#define GINTEN_ISOINCIE           USBBIT(20)             /*!< isochronous IN transfer not complete interrupt enable */
+#define GINTEN_OEPIE              USBBIT(19)             /*!< OUT endpoints interrupt enable */
+#define GINTEN_IEPIE              USBBIT(18)             /*!< IN endpoints interrupt enable */
+#define GINTEN_EOPFIE             USBBIT(15)             /*!< end of periodic frame interrupt enable */
+#define GINTEN_ISOOPDIE           USBBIT(14)             /*!< isochronous OUT packet dropped interrupt enable */
+#define GINTEN_ENUMFIE            USBBIT(13)             /*!< enumeration finish enable */
+#define GINTEN_RSTIE              USBBIT(12)             /*!< USB reset interrupt enable */
+#define GINTEN_SPIE               USBBIT(11)             /*!< USB suspend interrupt enable */
+#define GINTEN_ESPIE              USBBIT(10)             /*!< early suspend interrupt enable */
+#define GINTEN_GONAKIE            USBBIT(7)              /*!< global OUT NAK effective interrupt enable */
+#define GINTEN_GNPINAKIE          USBBIT(6)              /*!< global non-periodic IN NAK effective interrupt enable */
+#define GINTEN_NPTXFEIE           USBBIT(5)              /*!< non-periodic Tx FIFO empty interrupt enable */
+#define GINTEN_RXFNEIE            USBBIT(4)              /*!< receive FIFO non-empty interrupt enable */
+#define GINTEN_SOFIE              USBBIT(3)              /*!< start of frame interrupt enable */
+#define GINTEN_OTGIE              USBBIT(2)              /*!< OTG interrupt enable */
+#define GINTEN_MFIE               USBBIT(1)              /*!< mode fault interrupt enable */
 
 /* global receive status read and pop register bits definitions */
 #define GRSTATRP_RPCKST           BITS(17, 20)        /*!< received packet status */
@@ -313,14 +313,14 @@ typedef struct _usb_regs
 #define HNPTFQSTAT_CNUM           BITS(27, 30)        /*!< channel number*/
 #define HNPTFQSTAT_EPNUM          BITS(27, 30)        /*!< endpoint number */
 #define HNPTFQSTAT_TYPE           BITS(25, 26)        /*!< token type */
-#define HNPTFQSTAT_TMF            BIT(24)             /*!< terminate flag */
+#define HNPTFQSTAT_TMF            USBBIT(24)             /*!< terminate flag */
 
 /* global core configuration register bits definitions */
-#define GCCFG_VBUSIG              BIT(21)             /*!< vbus ignored */
-#define GCCFG_SOFOEN              BIT(20)             /*!< SOF output enable */
-#define GCCFG_VBUSBCEN            BIT(19)             /*!< the VBUS B-device comparer enable */
-#define GCCFG_VBUSACEN            BIT(18)             /*!< the VBUS A-device comparer enable */
-#define GCCFG_PWRON               BIT(16)             /*!< power on */
+#define GCCFG_VBUSIG              USBBIT(21)             /*!< vbus ignored */
+#define GCCFG_SOFOEN              USBBIT(20)             /*!< SOF output enable */
+#define GCCFG_VBUSBCEN            USBBIT(19)             /*!< the VBUS B-device comparer enable */
+#define GCCFG_VBUSACEN            USBBIT(18)             /*!< the VBUS A-device comparer enable */
+#define GCCFG_PWRON               USBBIT(16)             /*!< power on */
 
 /* core ID register bits definitions */
 #define CID_CID                   BITS(0, 31)         /*!< core ID */
@@ -334,7 +334,7 @@ typedef struct _usb_regs
 #define DIEPTFLEN_IEPTXRSAR       BITS(0, 15)         /*!< IN endpoint FIFOx Tx x RAM start address */
 
 /* host control register bits definitions */
-#define HCTL_SPDFSLS              BIT(2)              /*!< speed limited to FS and LS */
+#define HCTL_SPDFSLS              USBBIT(2)              /*!< speed limited to FS and LS */
 #define HCTL_CLKSEL               BITS(0, 1)          /*!< clock select for USB clock */
 
 /* host frame interval register bits definitions */
@@ -348,11 +348,11 @@ typedef struct _usb_regs
 #define HPTFQSTAT_PTXREQT         BITS(24, 31)        /*!< top entry of the periodic Tx request queue */
 #define HPTFQSTAT_PTXREQS         BITS(16, 23)        /*!< periodic Tx request queue space */
 #define HPTFQSTAT_PTXFS           BITS(0, 15)         /*!< periodic Tx FIFO space */
-#define HPTFQSTAT_OEFRM           BIT(31)             /*!< odd/eveb frame */
+#define HPTFQSTAT_OEFRM           USBBIT(31)             /*!< odd/eveb frame */
 #define HPTFQSTAT_CNUM            BITS(27, 30)        /*!< channel number */
 #define HPTFQSTAT_EPNUM           BITS(27, 30)        /*!< endpoint number */
 #define HPTFQSTAT_TYPE            BITS(25, 26)        /*!< token type */
-#define HPTFQSTAT_TMF             BIT(24)             /*!< terminate flag */
+#define HPTFQSTAT_TMF             USBBIT(24)             /*!< terminate flag */
 
 #define TFQSTAT_TXFS              BITS(0, 15)
 #define TFQSTAT_CNUM              BITS(27, 30)
@@ -365,63 +365,63 @@ typedef struct _usb_regs
 
 /* host port control and status register bits definitions */
 #define HPCS_PS                   BITS(17, 18)        /*!< port speed */
-#define HPCS_PP                   BIT(12)             /*!< port power */
+#define HPCS_PP                   USBBIT(12)             /*!< port power */
 #define HPCS_PLST                 BITS(10, 11)        /*!< port line status */
-#define HPCS_PRST                 BIT(8)              /*!< port reset */
-#define HPCS_PSP                  BIT(7)              /*!< port suspend */
-#define HPCS_PREM                 BIT(6)              /*!< port resume */
-#define HPCS_PEDC                 BIT(3)              /*!< port enable/disable change */
-#define HPCS_PE                   BIT(2)              /*!< port enable */
-#define HPCS_PCD                  BIT(1)              /*!< port connect detected */
-#define HPCS_PCST                 BIT(0)              /*!< port connect status */
+#define HPCS_PRST                 USBBIT(8)              /*!< port reset */
+#define HPCS_PSP                  USBBIT(7)              /*!< port suspend */
+#define HPCS_PREM                 USBBIT(6)              /*!< port resume */
+#define HPCS_PEDC                 USBBIT(3)              /*!< port enable/disable change */
+#define HPCS_PE                   USBBIT(2)              /*!< port enable */
+#define HPCS_PCD                  USBBIT(1)              /*!< port connect detected */
+#define HPCS_PCST                 USBBIT(0)              /*!< port connect status */
 
 /* host channel-x control register bits definitions */
-#define HCHCTL_CEN                BIT(31)             /*!< channel enable */
-#define HCHCTL_CDIS               BIT(30)             /*!< channel disable */
-#define HCHCTL_ODDFRM             BIT(29)             /*!< odd frame */
+#define HCHCTL_CEN                USBBIT(31)             /*!< channel enable */
+#define HCHCTL_CDIS               USBBIT(30)             /*!< channel disable */
+#define HCHCTL_ODDFRM             USBBIT(29)             /*!< odd frame */
 #define HCHCTL_DAR                BITS(22, 28)        /*!< device address */
 #define HCHCTL_MPC                BITS(20, 21)        /*!< multiple packet count */
 #define HCHCTL_EPTYPE             BITS(18, 19)        /*!< endpoint type */
-#define HCHCTL_LSD                BIT(17)             /*!< low-speed device */
-#define HCHCTL_EPDIR              BIT(15)             /*!< endpoint direction */
+#define HCHCTL_LSD                USBBIT(17)             /*!< low-speed device */
+#define HCHCTL_EPDIR              USBBIT(15)             /*!< endpoint direction */
 #define HCHCTL_EPNUM              BITS(11, 14)        /*!< endpoint number */
 #define HCHCTL_MPL                BITS(0, 10)         /*!< maximum packet length */
 
 /* host channel-x split transaction register bits definitions */
-#define HCHSTCTL_SPLEN            BIT(31)             /*!< enable high-speed split transaction */
-#define HCHSTCTL_CSPLT            BIT(16)             /*!< complete-split enable */
+#define HCHSTCTL_SPLEN            USBBIT(31)             /*!< enable high-speed split transaction */
+#define HCHSTCTL_CSPLT            USBBIT(16)             /*!< complete-split enable */
 #define HCHSTCTL_ISOPCE           BITS(14, 15)        /*!< isochronous OUT payload continuation encoding */
 #define HCHSTCTL_HADDR            BITS(7, 13)         /*!< HUB address */
 #define HCHSTCTL_PADDR            BITS(0, 6)          /*!< port address */
 
 /* host channel-x interrupt flag register bits definitions */
-#define HCHINTF_DTER              BIT(10)             /*!< data toggle error */
-#define HCHINTF_REQOVR            BIT(9)              /*!< request queue overrun */
-#define HCHINTF_BBER              BIT(8)              /*!< babble error */
-#define HCHINTF_USBER             BIT(7)              /*!< USB bus Error */
-#define HCHINTF_NYET              BIT(6)              /*!< NYET */
-#define HCHINTF_ACK               BIT(5)              /*!< ACK */
-#define HCHINTF_NAK               BIT(4)              /*!< NAK */
-#define HCHINTF_STALL             BIT(3)              /*!< STALL */
-#define HCHINTF_DMAER             BIT(2)              /*!< DMA error */
-#define HCHINTF_CH                BIT(1)              /*!< channel halted */
-#define HCHINTF_TF                BIT(0)              /*!< transfer finished */
+#define HCHINTF_DTER              USBBIT(10)             /*!< data toggle error */
+#define HCHINTF_REQOVR            USBBIT(9)              /*!< request queue overrun */
+#define HCHINTF_BBER              USBBIT(8)              /*!< babble error */
+#define HCHINTF_USBER             USBBIT(7)              /*!< USB bus Error */
+#define HCHINTF_NYET              USBBIT(6)              /*!< NYET */
+#define HCHINTF_ACK               USBBIT(5)              /*!< ACK */
+#define HCHINTF_NAK               USBBIT(4)              /*!< NAK */
+#define HCHINTF_STALL             USBBIT(3)              /*!< STALL */
+#define HCHINTF_DMAER             USBBIT(2)              /*!< DMA error */
+#define HCHINTF_CH                USBBIT(1)              /*!< channel halted */
+#define HCHINTF_TF                USBBIT(0)              /*!< transfer finished */
 
 /* host channel-x interrupt enable register bits definitions */
-#define HCHINTEN_DTERIE           BIT(10)             /*!< data toggle error interrupt enable */
-#define HCHINTEN_REQOVRIE         BIT(9)              /*!< request queue overrun interrupt enable */
-#define HCHINTEN_BBERIE           BIT(8)              /*!< babble error interrupt enable */
-#define HCHINTEN_USBERIE          BIT(7)              /*!< USB bus error interrupt enable */
-#define HCHINTEN_NYETIE           BIT(6)              /*!< NYET interrupt enable */
-#define HCHINTEN_ACKIE            BIT(5)              /*!< ACK interrupt enable */
-#define HCHINTEN_NAKIE            BIT(4)              /*!< NAK interrupt enable */
-#define HCHINTEN_STALLIE          BIT(3)              /*!< STALL interrupt enable */
-#define HCHINTEN_DMAERIE          BIT(2)              /*!< DMA error interrupt enable */
-#define HCHINTEN_CHIE             BIT(1)              /*!< channel halted interrupt enable */
-#define HCHINTEN_TFIE             BIT(0)              /*!< transfer finished interrupt enable */
+#define HCHINTEN_DTERIE           USBBIT(10)             /*!< data toggle error interrupt enable */
+#define HCHINTEN_REQOVRIE         USBBIT(9)              /*!< request queue overrun interrupt enable */
+#define HCHINTEN_BBERIE           USBBIT(8)              /*!< babble error interrupt enable */
+#define HCHINTEN_USBERIE          USBBIT(7)              /*!< USB bus error interrupt enable */
+#define HCHINTEN_NYETIE           USBBIT(6)              /*!< NYET interrupt enable */
+#define HCHINTEN_ACKIE            USBBIT(5)              /*!< ACK interrupt enable */
+#define HCHINTEN_NAKIE            USBBIT(4)              /*!< NAK interrupt enable */
+#define HCHINTEN_STALLIE          USBBIT(3)              /*!< STALL interrupt enable */
+#define HCHINTEN_DMAERIE          USBBIT(2)              /*!< DMA error interrupt enable */
+#define HCHINTEN_CHIE             USBBIT(1)              /*!< channel halted interrupt enable */
+#define HCHINTEN_TFIE             USBBIT(0)              /*!< transfer finished interrupt enable */
 
 /* host channel-x transfer length register bits definitions */
-#define HCHLEN_PING               BIT(31)             /*!< PING token request */
+#define HCHLEN_PING               USBBIT(31)             /*!< PING token request */
 #define HCHLEN_DPID               BITS(29, 30)        /*!< data PID */
 #define HCHLEN_PCNT               BITS(19, 28)        /*!< packet count */
 #define HCHLEN_TLEN               BITS(0, 18)         /*!< transfer length */
@@ -455,41 +455,41 @@ extern const uint32_t PIPE_DPID[2];
 /* device configuration registers bits definitions */
 #define DCFG_EOPFT                BITS(11, 12)        /*!< end of periodic frame time */
 #define DCFG_DAR                  BITS(4, 10)         /*!< device address */
-#define DCFG_NZLSOH               BIT(2)              /*!< non-zero-length status OUT handshake */
+#define DCFG_NZLSOH               USBBIT(2)              /*!< non-zero-length status OUT handshake */
 #define DCFG_DS                   BITS(0, 1)          /*!< device speed */
 
 /* device control registers bits definitions */
-#define DCTL_POIF                 BIT(11)             /*!< power-on initialization finished */
-#define DCTL_CGONAK               BIT(10)             /*!< clear global OUT NAK */
-#define DCTL_SGONAK               BIT(9)              /*!< set global OUT NAK */
-#define DCTL_CGINAK               BIT(8)              /*!< clear global IN NAK */
-#define DCTL_SGINAK               BIT(7)              /*!< set global IN NAK */
-#define DCTL_GONS                 BIT(3)              /*!< global OUT NAK status */
-#define DCTL_GINS                 BIT(2)              /*!< global IN NAK status */
-#define DCTL_SD                   BIT(1)              /*!< soft disconnect */
-#define DCTL_RWKUP                BIT(0)              /*!< remote wakeup */
+#define DCTL_POIF                 USBBIT(11)             /*!< power-on initialization finished */
+#define DCTL_CGONAK               USBBIT(10)             /*!< clear global OUT NAK */
+#define DCTL_SGONAK               USBBIT(9)              /*!< set global OUT NAK */
+#define DCTL_CGINAK               USBBIT(8)              /*!< clear global IN NAK */
+#define DCTL_SGINAK               USBBIT(7)              /*!< set global IN NAK */
+#define DCTL_GONS                 USBBIT(3)              /*!< global OUT NAK status */
+#define DCTL_GINS                 USBBIT(2)              /*!< global IN NAK status */
+#define DCTL_SD                   USBBIT(1)              /*!< soft disconnect */
+#define DCTL_RWKUP                USBBIT(0)              /*!< remote wakeup */
 
 /* device status registers bits definitions */
 #define DSTAT_FNRSOF              BITS(8, 21)         /*!< the frame number of the received SOF. */
 #define DSTAT_ES                  BITS(1, 2)          /*!< enumerated speed */
-#define DSTAT_SPST                BIT(0)              /*!< suspend status */
+#define DSTAT_SPST                USBBIT(0)              /*!< suspend status */
 
 /* device IN endpoint common interrupt enable registers bits definitions */
-#define DIEPINTEN_NAKEN           BIT(13)             /*!< NAK handshake sent by USBHS interrupt enable bit */
-#define DIEPINTEN_TXFEEN          BIT(7)              /*!< transmit FIFO empty interrupt enable bit */
-#define DIEPINTEN_IEPNEEN         BIT(6)              /*!< IN endpoint NAK effective interrupt enable bit */
-#define DIEPINTEN_EPTXFUDEN       BIT(4)              /*!< endpoint Tx FIFO underrun interrupt enable bit */
-#define DIEPINTEN_CITOEN          BIT(3)              /*!< control In Timeout interrupt enable bit */
-#define DIEPINTEN_EPDISEN         BIT(1)              /*!< endpoint disabled interrupt enable bit */
-#define DIEPINTEN_TFEN            BIT(0)              /*!< transfer finished interrupt enable bit */
+#define DIEPINTEN_NAKEN           USBBIT(13)             /*!< NAK handshake sent by USBHS interrupt enable bit */
+#define DIEPINTEN_TXFEEN          USBBIT(7)              /*!< transmit FIFO empty interrupt enable bit */
+#define DIEPINTEN_IEPNEEN         USBBIT(6)              /*!< IN endpoint NAK effective interrupt enable bit */
+#define DIEPINTEN_EPTXFUDEN       USBBIT(4)              /*!< endpoint Tx FIFO underrun interrupt enable bit */
+#define DIEPINTEN_CITOEN          USBBIT(3)              /*!< control In Timeout interrupt enable bit */
+#define DIEPINTEN_EPDISEN         USBBIT(1)              /*!< endpoint disabled interrupt enable bit */
+#define DIEPINTEN_TFEN            USBBIT(0)              /*!< transfer finished interrupt enable bit */
 
 /* device OUT endpoint common interrupt enable registers bits definitions */
-#define DOEPINTEN_NYETEN          BIT(14)             /*!< NYET handshake is sent interrupt enable bit */
-#define DOEPINTEN_BTBSTPEN        BIT(6)              /*!< back-to-back SETUP packets interrupt enable bit */
-#define DOEPINTEN_EPRXFOVREN      BIT(4)              /*!< endpoint Rx FIFO overrun interrupt enable bit */
-#define DOEPINTEN_STPFEN          BIT(3)              /*!< SETUP phase finished interrupt enable bit */
-#define DOEPINTEN_EPDISEN         BIT(1)              /*!< endpoint disabled interrupt enable bit */
-#define DOEPINTEN_TFEN            BIT(0)              /*!< transfer finished interrupt enable bit */
+#define DOEPINTEN_NYETEN          USBBIT(14)             /*!< NYET handshake is sent interrupt enable bit */
+#define DOEPINTEN_BTBSTPEN        USBBIT(6)              /*!< back-to-back SETUP packets interrupt enable bit */
+#define DOEPINTEN_EPRXFOVREN      USBBIT(4)              /*!< endpoint Rx FIFO overrun interrupt enable bit */
+#define DOEPINTEN_STPFEN          USBBIT(3)              /*!< SETUP phase finished interrupt enable bit */
+#define DOEPINTEN_EPDISEN         USBBIT(1)              /*!< endpoint disabled interrupt enable bit */
+#define DOEPINTEN_TFEN            USBBIT(0)              /*!< transfer finished interrupt enable bit */
 
 /* device all endpoints interrupt registers bits definitions */
 #define DAEPINT_OEPITB            BITS(16, 21)        /*!< device all OUT endpoint interrupt bits */
@@ -509,53 +509,53 @@ extern const uint32_t PIPE_DPID[2];
 #define DIEPFEINTEN_IEPTXFEIE     BITS(0, 5)          /*!< IN endpoint Tx FIFO empty interrupt enable bits */
 
 /* device endpoint 0 control register bits definitions */
-#define DEP0CTL_EPEN              BIT(31)             /*!< endpoint enable */
-#define DEP0CTL_EPD               BIT(30)             /*!< endpoint disable */
-#define DEP0CTL_SNAK              BIT(27)             /*!< set NAK */
-#define DEP0CTL_CNAK              BIT(26)             /*!< clear NAK */
+#define DEP0CTL_EPEN              USBBIT(31)             /*!< endpoint enable */
+#define DEP0CTL_EPD               USBBIT(30)             /*!< endpoint disable */
+#define DEP0CTL_SNAK              USBBIT(27)             /*!< set NAK */
+#define DEP0CTL_CNAK              USBBIT(26)             /*!< clear NAK */
 #define DIEP0CTL_TXFNUM           BITS(22, 25)        /*!< tx FIFO number */
-#define DEP0CTL_STALL             BIT(21)             /*!< STALL handshake */
-#define DOEP0CTL_SNOOP            BIT(20)             /*!< snoop mode */
+#define DEP0CTL_STALL             USBBIT(21)             /*!< STALL handshake */
+#define DOEP0CTL_SNOOP            USBBIT(20)             /*!< snoop mode */
 #define DEP0CTL_EPTYPE            BITS(18, 19)        /*!< endpoint type */
-#define DEP0CTL_NAKS              BIT(17)             /*!< NAK status */
-#define DEP0CTL_EPACT             BIT(15)             /*!< endpoint active */
+#define DEP0CTL_NAKS              USBBIT(17)             /*!< NAK status */
+#define DEP0CTL_EPACT             USBBIT(15)             /*!< endpoint active */
 #define DEP0CTL_MPL               BITS(0, 1)          /*!< maximum packet length */
 
 /* device endpoint x control register bits definitions */
-#define DEPCTL_EPEN               BIT(31)             /*!< endpoint enable */
-#define DEPCTL_EPD                BIT(30)             /*!< endpoint disable */
-#define DEPCTL_SODDFRM            BIT(29)             /*!< set odd frame */
-#define DEPCTL_SD1PID             BIT(29)             /*!< set DATA1 PID */
-#define DEPCTL_SEVNFRM            BIT(28)             /*!< set even frame */
-#define DEPCTL_SD0PID             BIT(28)             /*!< set DATA0 PID */
-#define DEPCTL_SNAK               BIT(27)             /*!< set NAK */
-#define DEPCTL_CNAK               BIT(26)             /*!< clear NAK */
+#define DEPCTL_EPEN               USBBIT(31)             /*!< endpoint enable */
+#define DEPCTL_EPD                USBBIT(30)             /*!< endpoint disable */
+#define DEPCTL_SODDFRM            USBBIT(29)             /*!< set odd frame */
+#define DEPCTL_SD1PID             USBBIT(29)             /*!< set DATA1 PID */
+#define DEPCTL_SEVNFRM            USBBIT(28)             /*!< set even frame */
+#define DEPCTL_SD0PID             USBBIT(28)             /*!< set DATA0 PID */
+#define DEPCTL_SNAK               USBBIT(27)             /*!< set NAK */
+#define DEPCTL_CNAK               USBBIT(26)             /*!< clear NAK */
 #define DIEPCTL_TXFNUM            BITS(22, 25)        /*!< tx FIFO number */
-#define DEPCTL_STALL              BIT(21)             /*!< STALL handshake */
-#define DOEPCTL_SNOOP             BIT(20)             /*!< snoop mode */
+#define DEPCTL_STALL              USBBIT(21)             /*!< STALL handshake */
+#define DOEPCTL_SNOOP             USBBIT(20)             /*!< snoop mode */
 #define DEPCTL_EPTYPE             BITS(18, 19)        /*!< endpoint type */
-#define DEPCTL_NAKS               BIT(17)             /*!< NAK status */
-#define DEPCTL_EOFRM              BIT(16)             /*!< even/odd frame */
-#define DEPCTL_DPID               BIT(16)             /*!< endpoint data PID */
-#define DEPCTL_EPACT              BIT(15)             /*!< endpoint active */
+#define DEPCTL_NAKS               USBBIT(17)             /*!< NAK status */
+#define DEPCTL_EOFRM              USBBIT(16)             /*!< even/odd frame */
+#define DEPCTL_DPID               USBBIT(16)             /*!< endpoint data PID */
+#define DEPCTL_EPACT              USBBIT(15)             /*!< endpoint active */
 #define DEPCTL_MPL                BITS(0, 10)         /*!< maximum packet length */
 
 /* device IN endpoint-x interrupt flag register bits definitions */
-#define DIEPINTF_NAK              BIT(13)             /*!< NAK handshake sent by USBHS */
-#define DIEPINTF_TXFE             BIT(7)              /*!< transmit FIFO empty */
-#define DIEPINTF_IEPNE            BIT(6)              /*!< IN endpoint NAK effective */
-#define DIEPINTF_EPTXFUD          BIT(4)              /*!< endpoint Tx FIFO underrun */
-#define DIEPINTF_CITO             BIT(3)              /*!< control In Timeout interrupt */
-#define DIEPINTF_EPDIS            BIT(1)              /*!< endpoint disabled */
-#define DIEPINTF_TF               BIT(0)              /*!< transfer finished */
+#define DIEPINTF_NAK              USBBIT(13)             /*!< NAK handshake sent by USBHS */
+#define DIEPINTF_TXFE             USBBIT(7)              /*!< transmit FIFO empty */
+#define DIEPINTF_IEPNE            USBBIT(6)              /*!< IN endpoint NAK effective */
+#define DIEPINTF_EPTXFUD          USBBIT(4)              /*!< endpoint Tx FIFO underrun */
+#define DIEPINTF_CITO             USBBIT(3)              /*!< control In Timeout interrupt */
+#define DIEPINTF_EPDIS            USBBIT(1)              /*!< endpoint disabled */
+#define DIEPINTF_TF               USBBIT(0)              /*!< transfer finished */
 
 /* device OUT endpoint-x interrupt flag register bits definitions */
-#define DOEPINTF_NYET             BIT(14)             /*!< NYET handshake is sent */
-#define DOEPINTF_BTBSTP           BIT(6)              /*!< back-to-back SETUP packets */
-#define DOEPINTF_EPRXFOVR         BIT(4)              /*!< endpoint Rx FIFO overrun */
-#define DOEPINTF_STPF             BIT(3)              /*!< SETUP phase finished */
-#define DOEPINTF_EPDIS            BIT(1)              /*!< endpoint disabled */
-#define DOEPINTF_TF               BIT(0)              /*!< transfer finished */
+#define DOEPINTF_NYET             USBBIT(14)             /*!< NYET handshake is sent */
+#define DOEPINTF_BTBSTP           USBBIT(6)              /*!< back-to-back SETUP packets */
+#define DOEPINTF_EPRXFOVR         USBBIT(4)              /*!< endpoint Rx FIFO overrun */
+#define DOEPINTF_STPF             USBBIT(3)              /*!< SETUP phase finished */
+#define DOEPINTF_EPDIS            USBBIT(1)              /*!< endpoint disabled */
+#define DOEPINTF_TF               USBBIT(0)              /*!< transfer finished */
 
 /* device IN endpoint 0 transfer length register bits definitions */
 #define DIEP0LEN_PCNT             BITS(19, 20)        /*!< packet count */
@@ -563,7 +563,7 @@ extern const uint32_t PIPE_DPID[2];
 
 /* device OUT endpoint 0 transfer length register bits definitions */
 #define DOEP0LEN_STPCNT           BITS(29, 30)        /*!< SETUP packet count */
-#define DOEP0LEN_PCNT             BIT(19)             /*!< packet count */
+#define DOEP0LEN_PCNT             USBBIT(19)             /*!< packet count */
 #define DOEP0LEN_TLEN             BITS(0, 6)          /*!< transfer length */
 
 /* device OUT endpoint-x transfer length register bits definitions */
@@ -583,8 +583,8 @@ extern const uint32_t PIPE_DPID[2];
 #define DIEPTFSTAT_IEPTFS         BITS(0, 15)         /*!< IN endpoint Tx FIFO space remaining */
 
 /* USB power and clock registers bits definition */
-#define PWRCLKCTL_SHCLK           BIT(1)              /*!< stop HCLK */
-#define PWRCLKCTL_SUCLK           BIT(0)              /*!< stop the USB clock */
+#define PWRCLKCTL_SHCLK           USBBIT(1)              /*!< stop HCLK */
+#define PWRCLKCTL_SUCLK           USBBIT(0)              /*!< stop the USB clock */
 
 #define RSTAT_GOUT_NAK                  1U    /* global OUT NAK (triggers an interrupt) */
 #define RSTAT_DATA_UPDT                 2U    /* OUT data packet received */

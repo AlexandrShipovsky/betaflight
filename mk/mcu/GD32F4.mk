@@ -62,6 +62,22 @@ DEVICE_STDPERIPH_SRC := $(STDPERIPH_SRC) \
                         $(USBCORE_SRC) \
                         $(USBCDC_SRC)
 else
+#GD32
+GD32USBUSTD_DIR = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/ustd
+
+GD32USBCORE_DIR = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/device/core
+GD32USBCORE_SRC = $(notdir $(wildcard $(GD32USBCORE_DIR)/Source/*.c))
+
+GD32USBCDC_DIR = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/device/class/cdc
+GD32USBCDC_SRC = $(notdir $(wildcard $(GD32USBCDC_DIR)/Source/*.c))
+
+GD32USBDRV_DIR = $(ROOT)/lib/main/GD32F4/GD32F4xx_usb_library/driver
+GD32USBDRV_SRC = $(notdir $(wildcard $(GD32USBDRV_DIR)/Source/*.c))
+EXCLUDES       = drv_usb_host.c \
+				 drv_usbh_int.c
+GD32USBDRV_SRC := $(filter-out ${EXCLUDES}, $(GD32USBDRV_SRC))
+
+#STM32+ALL
 USBCORE_DIR = $(ROOT)/lib/main/STM32_USB_Device_Library/Core
 USBCORE_SRC = $(notdir $(wildcard $(USBCORE_DIR)/src/*.c))
 USBOTG_DIR  = $(ROOT)/lib/main/STM32_USB_OTG_Driver
@@ -85,7 +101,7 @@ USBHID_DIR  = $(ROOT)/lib/main/STM32_USB_Device_Library/Class/hid
 USBHID_SRC  = $(notdir $(wildcard $(USBHID_DIR)/src/*.c))
 USBWRAPPER_DIR  = $(ROOT)/lib/main/STM32_USB_Device_Library/Class/hid_cdc_wrapper
 USBWRAPPER_SRC  = $(notdir $(wildcard $(USBWRAPPER_DIR)/src/*.c))
-VPATH       := $(VPATH):$(USBOTG_DIR)/src:$(USBCORE_DIR)/src:$(USBCDC_DIR)/src:$(USBMSC_DIR)/src:$(USBHID_DIR)/src:$(USBWRAPPER_DIR)/src
+VPATH       := $(VPATH):$(USBOTG_DIR)/src:$(USBCORE_DIR)/src:$(USBCDC_DIR)/src:$(USBMSC_DIR)/src:$(USBHID_DIR)/src:$(USBWRAPPER_DIR)/src:$(GD32USBCORE_DIR)/Source:$(GD32USBCDC_DIR)/Source:$(GD32USBDRV_DIR)/Source
 
 DEVICE_STDPERIPH_SRC := $(STDPERIPH_SRC) \
                         $(USBOTG_SRC) \
@@ -93,7 +109,10 @@ DEVICE_STDPERIPH_SRC := $(STDPERIPH_SRC) \
                         $(USBCDC_SRC) \
                         $(USBHID_SRC) \
                         $(USBWRAPPER_SRC) \
-                        $(USBMSC_SRC)
+                        $(USBMSC_SRC) \
+                        $(GD32USBCORE_SRC) \
+                        $(GD32USBCDC_SRC) \
+                        $(GD32USBDRV_SRC)
 endif
 
 #CMSIS
@@ -116,6 +135,11 @@ CMSIS_SRC       := $(notdir $(wildcard $(CMSIS_DIR)/CoreSupport/*.c \
                    $(ROOT)/lib/main/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx/*.c))
 INCLUDE_DIRS    := $(INCLUDE_DIRS) \
                    $(STDPERIPH_DIR)/inc \
+                   $(GD32USBCORE_DIR)/Include \
+                   $(GD32USBCDC_DIR)/Include \
+                   $(GD32USBDRV_DIR)/Include \
+                   $(GD32USBUSTD_DIR)/class/cdc\
+                   $(GD32USBUSTD_DIR)/common \
                    $(USBOTG_DIR)/inc \
                    $(USBCORE_DIR)/inc \
                    $(USBCDC_DIR)/inc \

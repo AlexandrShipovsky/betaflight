@@ -36,6 +36,8 @@
 #if defined(STM32F4)
 #include "usb_core.h"
 #include "usbd_cdc_vcp.h"
+#include "cdc_acm_core.h"
+usb_core_driver cdc_acm;
 #ifdef USE_USB_CDC_HID
 #include "usbd_hid_cdc_wrapper.h"
 #endif
@@ -229,11 +231,15 @@ serialPort_t *usbVcpOpen(void)
     switch (usbDevConfig()->type) {
 #ifdef USE_USB_CDC_HID
     case COMPOSITE:
-        USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_HID_CDC_cb, &USR_cb);
+        //USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_HID_CDC_cb, &USR_cb);
         break;
 #endif
     default:
-        USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
+        //USBD_Init(&USB_OTG_dev, USB_OTG_FS_CORE_ID, &USR_desc, &USBD_CDC_cb, &USR_cb);
+          usbd_init (&cdc_acm,
+            USB_CORE_ENUM_FS,
+             &cdc_desc,
+             &cdc_class);
         break;
     }
 #elif defined(STM32F7) || defined(STM32H7) || defined(STM32G4)
