@@ -93,6 +93,42 @@ const spiHardware_t spiHardware[] = {
         .af = GPIO_AF_SPI3,
         .rcc = RCC_APB1(SPI3),
     },
+        {
+        .device = SPIDEV_4,
+        .reg = SPI4,
+        .sckPins = {
+            { DEFIO_TAG_E(PE2) },
+            { DEFIO_TAG_E(PE12) },
+        },
+        .misoPins = {
+            { DEFIO_TAG_E(PE5) },
+            { DEFIO_TAG_E(PE13) },
+        },
+        .mosiPins = {
+            { DEFIO_TAG_E(PE6) },
+            { DEFIO_TAG_E(PE14) },
+        },
+        .af = GPIO_AF_SPI4,
+        .rcc = RCC_APB2(SPI4),
+    },
+        {
+        .device = SPIDEV_5,
+        .reg = SPI5,
+        .sckPins = {
+            { DEFIO_TAG_E(PF7) },
+            { DEFIO_TAG_E(PH6) },
+        },
+        .misoPins = {
+            { DEFIO_TAG_E(PF8) },
+            { DEFIO_TAG_E(PH7) },
+        },
+        .mosiPins = {
+            { DEFIO_TAG_E(PF9) },
+            { DEFIO_TAG_E(PF11) },
+        },
+        .af = GPIO_AF_SPI5,
+        .rcc = RCC_APB2(SPI5),
+    },
 #endif
 #ifdef STM32F7
     {
