@@ -45,8 +45,9 @@
 
 // 10 MHz max SPI frequency
 #define BMP388_MAX_SPI_CLK_HZ 10000000
-
+#ifndef BMP388_I2C_ADDR
 #define BMP388_I2C_ADDR                                 (0x76) // same as BMP280/BMP180
+#endif
 #define BMP388_DEFAULT_CHIP_ID                          (0x50) // from https://github.com/BoschSensortec/BMP3-Sensor-API/blob/master/bmp3_defs.h#L130
 
 #define BMP388_CMD_REG                                  (0x7E)
